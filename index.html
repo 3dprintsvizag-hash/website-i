@@ -1,56 +1,416 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>IMO TECH VIZAG</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMO TECH VIZAG | Sreenivas Pediredla</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        body{
-            background:#0d1117;
-            color:white;
-            font-family:Arial;
-            text-align:center;
-            margin-top:80px;
+        :root {
+            --bg-color: #080b10;
+            --card-bg: rgba(13, 20, 30, 0.7);
+            --neon-blue: #00f2fe;
+            --neon-green: #4facfe;
+            --tech-green: #00ff87;
+            --text-main: #f0f4f8;
+            --text-muted: #94a3b8;
         }
 
-        h1{
-            color:#00ff99;
-            font-size:50px;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        button{
-            padding:15px 30px;
-            font-size:20px;
-            background:#00ff99;
-            border:none;
-            border-radius:10px;
-            cursor:pointer;
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
         }
 
-        button:hover{
-            background:#00cc77;
+        /* Moving Cyberpunk Ambient Lighting Background */
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            opacity: 0.35;
+            animation: floatLight 12s infinite alternate ease-in-out;
+        }
+
+        body::before {
+            background: radial-gradient(circle, var(--neon-blue), transparent);
+            top: -10%;
+            left: -10%;
+        }
+
+        body::after {
+            background: radial-gradient(circle, var(--tech-green), transparent);
+            bottom: -10%;
+            right: -10%;
+            animation-delay: 6s;
+        }
+
+        @keyframes floatLight {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(80px, 50px) scale(1.2); }
+        }
+
+        /* Header / Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(8, 11, 16, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--tech-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--tech-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 8% 120px 8%;
+            min-height: 85vh;
+            gap: 50px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--neon-blue);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(45deg, #00f2fe, #00ff87);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        /* Avatar Container with Animated Blue/Green Glowing Borders */
+        .hero-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            padding: 8px;
+            background: linear-gradient(135deg, var(--neon-blue), var(--tech-green));
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.3), 0 0 50px rgba(0, 255, 135, 0.2);
+            animation: borderGlow 8s infinite alternate linear;
+        }
+
+        @keyframes borderGlow {
+            0% { transform: translateY(0px) rotate(0deg); filter: hue-rotate(0deg); }
+            100% { transform: translateY(-10px) rotate(5deg); filter: hue-rotate(45deg); }
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            background-color: #0d141e;
+            border: 4px solid var(--bg-color);
+        }
+
+        /* Tech Core Pillars Section */
+        .section-title {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--tech-green);
+            margin: 15px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 8% 100px 8%;
+        }
+
+        .pillar-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.15);
+        }
+
+        .pillar-card i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--tech-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pillar-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .pillar-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Projects Timeline Showcase */
+        .projects-section {
+            background: rgba(13, 20, 30, 0.4);
+            padding: 90px 8%;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: rgba(8, 11, 16, 0.8);
+            border-left: 4px solid var(--tech-green);
+            border-radius: 0 16px 16px 0;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card .tag {
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            background: rgba(0, 255, 135, 0.1);
+            color: var(--tech-green);
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        .project-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Contact/Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 40px;
+            }
+            .hero-content h1 { font-size: 2.5rem; }
+            .profile-wrapper { width: 300px; height: 300px; }
         }
     </style>
 </head>
-
 <body>
 
-<h1>IMO TECH VIZAG</h1>
+    <header>
+        <div class="logo">IMO TECH VIZAG</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#technologies">Expertise</a>
+            <a href="#projects">Projects</a>
+        </nav>
+    </header>
 
-<h2>Welcome to My Website</h2>
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <h2>Hardware & IoT Engineer</h2>
+            <h1>Hi, I'm <span>Sreenivas Pediredla</span></h1>
+            <p>
+                Founder of <strong>IMO TECH VIZAG</strong>. I build state-of-the-art automation systems, custom tracking machinery, and smart connected environments using advanced microcontrollers and rapid prototyping platforms.
+            </p>
+        </div>
+        <div class="hero-image-container">
+            <div class="profile-wrapper">
+                <img src="imo-tech-mine.jpeg" alt="Sreenivas Pediredla - IMO Tech" class="profile-img">
+            </div>
+        </div>
+    </section>
 
-<p>
-ESP32 | AI | Robotics | IoT Projects
-</p>
+    <section id="technologies">
+        <h2 class="section-title">Core Technology Domains</h2>
+        <div class="pillars">
+            <div class="pillar-card">
+                <i class="fa-solid degrad-icon fa-robot"></i>
+                <h3>Robotics</h3>
+                <p>Developing gesture-controlled platforms, automated machinery, and precision robotic setups using hardware acceleration and motor control design.</p>
+            </div>
+            <div class="pillar-card">
+                <i class="fa-solid fa-network-wired"></i>
+                <h3>IoT Development</h3>
+                <p>Deploying remote tracking telemetry, custom sensory pipelines, and data synchronization frameworks via Blynk, Telegram, and cloud APIs.</p>
+            </div>
+            <div class="pillar-card">
+                <i class="fa-solid fa-microchip"></i>
+                <h3>Embedded Systems</h3>
+                <p>Expert programming on high-efficiency microcontrollers, custom logic paths, and non-blocking multi-device architectures.</p>
+            </div>
+            <div class="pillar-card">
+                <i class="fa-brands fa-raspberry-pi"></i>
+                <h3>Raspberry Pi</h3>
+                <p>Leveraging powerful single-board computing solutions for local web servers, camera processing modules, and complex automation controls.</p>
+            </div>
+        </div>
+    </section>
 
-<button onclick="hello()">
-Click Me
-</button>
+    <section class="projects-section" id="projects">
+        <h2 class="section-title">Featured Innovations</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <span class="tag">RFID & Load Cell</span>
+                <h4>Digital Weighbridge System</h4>
+                <p>An automated industrial logistics tracking platform featuring secure multi-tag RFID authorization combined with precision dual-load cell calibration setups.</p>
+            </div>
 
-<script>
-function hello()
-{
-    alert("Welcome to IMO TECH VIZAG!");
-}
-</script>
+            <div class="project-card">
+                <span class="tag">ESP32 & Sensors</span>
+                <h4>IoT Transformer Monitoring System</h4>
+                <p>A multi-point industrial safety tracker measuring operational temperatures, ultrasonic fluid layout metrics, and electrical variance parameters linked directly to real-time status platforms.</p>
+            </div>
+
+            <div class="project-card">
+                <span class="tag">ESP8266 & Web Server</span>
+                <h4>IoT School Bell & Reminder System</h4>
+                <p>An access-point configurable scheduling framework that prints multi-byte character fields across LED arrays while broadcasting audio updates simultaneously.</p>
+            </div>
+
+            <div class="project-card">
+                <span class="tag">GPS & GSM / Hardware</span>
+                <h4>Railway Crack Detection Vehicle</h4>
+                <p>An automated exploration rover utilizing rapid-response physical scanning metrics paired with instant regional coordination arrays via satellite tracking.</p>
+            </div>
+
+            <div class="project-card">
+                <span class="tag">TinyML & Animation</span>
+                <h4>Interactive Smart Desk Companion</h4>
+                <p>A multi-sensor physical companion utilizing optimized non-blocking graphics loops and adaptive internal logic structures for local visual expressions.</p>
+            </div>
+
+            <div class="project-card">
+                <span class="tag">Hardware & Control</span>
+                <h4>3-Axis CNC & Automated Drawing System</h4>
+                <p>A high-accuracy algorithmic platform built on custom coordinate execution systems for highly repeatable structural drawing and precision carving paths.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 IMO TECH VIZAG. Engineered by Sreenivas Pediredla. All Rights Reserved.</p>
+    </footer>
 
 </body>
 </html>
